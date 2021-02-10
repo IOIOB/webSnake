@@ -30,6 +30,7 @@ const findFoodPosition = function (snake) {
 
 const snakeCollides = snake => (snake.slice(1)).some(element => pointEquals(element, snake[0]));
 
+
 const initGame = function () {
     let game = {};
     
@@ -49,6 +50,7 @@ const updateGame = function (game) {
     else {
         nextGame.input = game.input;
     }
+
     nextGame.food = game.food;
 
     nextGame.snake = game.snake;
@@ -58,14 +60,14 @@ const updateGame = function (game) {
     });
 
     if (!willEatFood(nextGame.snake, nextGame.food)){
-        nextGame.snake.pop()
+        nextGame.snake.pop();
     }
     else {
         nextGame.food = findFoodPosition(nextGame.snake);
     }
 
     if (snakeCollides(nextGame.snake)){
-        nextGame = initGame()
+        nextGame = initGame();
     }
 
     return nextGame;

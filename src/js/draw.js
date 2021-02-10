@@ -39,17 +39,15 @@ const drawFood = function (fruit) {
 let game = initGame();
 
 let lastTime = 0;
-
 loop = function (currentTime) {
     let deltaTime = currentTime - lastTime;
 
     
     if (deltaTime >= FRAME_TIME){
-        console.log(deltaTime);
         lastTime = currentTime;
 
         game = updateGame(game);
-
+        
         drawBg();
         drawSnake(game.snake);
         drawFood(game.food);
