@@ -22,7 +22,7 @@ let drawBg = function () {
     }
 };
 
-let drawSnake = function () {
+let drawSnake = function (snake) {
     graphics.fillStyle = SNAKE_COLOUR
     snake.forEach(element => {
         graphics.fillRect(element.x * TILE_SIZE, element.y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
@@ -30,6 +30,7 @@ let drawSnake = function () {
 }
 
 window.onload = function () {
+    let game = initGame();
     drawBg();
-    drawSnake();
+    drawSnake(game.snake);
 };
