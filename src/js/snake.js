@@ -3,11 +3,6 @@
 const WIDTH = 16;
 const HEIGHT = 10;
 
-
-Number.prototype.mod = function(n) {
-    return ((this%n)+n)%n;
-    }
-
 const mod = (n, m) => ((n % m) + m) % m;
 
 const Point = (x, y) => ({x: x, y: y});
@@ -32,6 +27,8 @@ const findFoodPosition = function (snake) {
     } while (snake.find(element => element.x == x && element.y == y));
     return {x: x, y: y};
 };
+
+const snakeCollides = snake => (snake.slice(1)).some(element => pointEquals(element, snake[0]));
 
 const initGame = function () {
     let game = {};
@@ -65,6 +62,10 @@ const updateGame = function (game) {
     }
     else {
         nextGame.food = findFoodPosition(nextGame.snake);
+    }
+
+    if (snakeCollides(nextGame.snake)){
+        nextGame = initGame()
     }
 
     return nextGame;
