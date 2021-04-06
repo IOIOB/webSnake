@@ -1,2 +1,2 @@
 # webSnake
-Yeah, it's just snake lol
+Basic snake game using somewhat functional ES
